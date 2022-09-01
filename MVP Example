@@ -4,10 +4,10 @@
 
 2. modelLinster.hpp 에다가 virtual 함수 작성.            -->   virtual void UpdatePL() {}
 
-3. Presenter.cpp와 hpp 에다가 2번의 함수 구현.           -->   void screen1_MainPresenter::UpdatePL() { }
+3. View.cpp와 hpp 에다가 UI를 동작 시킬 함수 구현.         --> screen1_MainView::SetPL() { ... }
 
-4. View.cpp와 hpp 에다가 UI를 동작 시킬 함수 구현.         --> screen1_MainView::SetPL() { ... }
+4. Presenter.cpp와 hpp 에다가 2번의 함수 구현.           -->   void screen1_MainPresenter::UpdatePL() { }
 
-5. Presenter에 만든 함수(3번)에다가 view 함수를 연결.           --> void screen1_MainPresenter::UpdatePL() {  view.SetPL();  }
+5. Presenter에 만든 함수(4번)에다가 view 함수를 연결.           --> void screen1_MainPresenter::UpdatePL() {  view.SetPL();  }
 
 
