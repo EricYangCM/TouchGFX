@@ -1,0 +1,29 @@
+bool STM32TouchController::sampleTouch(int32_t& x, int32_t& y)
+{
+    /**
+     * By default sampleTouch returns false,
+     * return true if a touch has been detected, otherwise false.
+     *
+     * Coordinates are passed to the caller by reference by x and y.
+     *
+     * This function is called by the TouchGFX framework.
+     * By default sampleTouch is called every tick, this can be adjusted by HAL::setTouchSampleRate(int8_t);
+     *
+     */
+
+
+	if(TSC2007_IsTouched() && (Status_Register.IsLowBattery == 0))
+	{
+		unsigned int tempXY[2];
+
+		TSC2007_GetXY(tempXY);
+
+		x = tempXY[0];
+		y = tempXY[1];
+
+		return true;
+	}
+
+
+    return false;
+}
