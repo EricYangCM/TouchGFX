@@ -1,0 +1,4 @@
+
+
+Unicode::snprintf(tbox_PL_testBuffer, TBOX_PL_TEST_SIZE, "%d", Status_Register.PL);
+		tbox_PL_test.invalidate();
