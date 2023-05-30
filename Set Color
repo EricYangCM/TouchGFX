@@ -1,0 +1,4 @@
+
+#include "BitmapDatabase.hpp"
+
+tbox_Battery.setColor(colortype(0xFFFFFF));
