@@ -1,0 +1,3 @@
+#include <images/BitmapDatabase.hpp>
+
+img_Status.setBitmap(Bitmap(BITMAP_PLAY_BUTTON_ID));
