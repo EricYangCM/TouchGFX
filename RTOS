@@ -1,0 +1,3 @@
+TaskName : TouchGFXTask
+Entry Function : TouchGFX_Task
+Code Generation Option : As external
