@@ -1,0 +1,63 @@
+Setting SPI display device with TouchGFX
+
+1. Need Graphic Driver Library
+- Set Window : Column Address Set, Page Address Set
+- DrawBitMap : 
+
+
+void ILI9341_SetWindow(uint16_t start_x, uint16_t start_y, uint16_t end_x, uint16_t end_y);
+void ILI9341_DrawBitmap(uint16_t w, uint16_t h, uint8_t *s);
+
+
+
+2. Set Functions to TouchGFX Transmit block
+ex)
+void touchgfxDisplayDriverTransmitBlock(uint8_t* pixels, uint16_t x, uint16_t y, uint16_t w, uint16_t h)
+{
+	isTransmittingData = 1;
+	ILI9341_SetWindow(x, y, x+w-1, y+h-1);
+	ILI9341_DrawBitmap(w, h, pixels);
+}
+
+
+
+
+
+void ILI9341_SetWindow(uint16_t start_x, uint16_t start_y, uint16_t end_x, uint16_t end_y)
+{
+	// Set Window
+	LCD_WR_REG(0x2a);
+	LCD_WR_DATA(start_x >> 8);
+	LCD_WR_DATA(0xFF & start_x);
+	LCD_WR_DATA(end_x >> 8);
+	LCD_WR_DATA(0xFF & end_x);
+
+	LCD_WR_REG(0x2b);
+	LCD_WR_DATA(start_y >> 8);
+	LCD_WR_DATA(0xFF & start_y);
+	LCD_WR_DATA(end_y >> 8);
+	LCD_WR_DATA(0xFF & end_y);
+}
+
+// Call this function after ILI9341_SetWindow
+// This function is non blocked
+// The variable for Callback is open. User should set by himself
+void ILI9341_DrawBitmap(uint16_t w, uint16_t h, uint8_t *s)
+{
+	// Enable to access GRAM
+	LCD_WR_REG(0x2c);
+
+	DC_H();
+#if 0
+	__HAL_SPI_DISABLE(&hspi1);
+	hspi1.Instance->CR2 |= SPI_DATASIZE_16BIT; // Set 16 bit mode
+	__HAL_SPI_ENABLE(&hspi1);
+#endif
+	ConvHL(s, (int32_t)w*h*2);
+	HAL_SPI_Transmit_DMA(&hspi1, (uint8_t*)s, w * h *2);
+#if 0
+	__HAL_SPI_DISABLE(&hspi1);
+	hspi1.Instance->CR2 &= ~(SPI_DATASIZE_16BIT); // Set 8 bit mode
+	__HAL_SPI_ENABLE(&hspi1);
+#endif
+}
