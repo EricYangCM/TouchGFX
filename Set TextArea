@@ -1,4 +1,10 @@
 
+// String
+#include <texts/TextKeysAndLanguages.hpp>
+Unicode::snprintf(tbox_StatusBuffer, TBOX_STATUS_SIZE, "%s", touchgfx::TypedText(T_TESTSTRING).getText());
+tbox_Status.invalidate();
 
+
+// Integer
 Unicode::snprintf(tbox_PL_testBuffer, TBOX_PL_TEST_SIZE, "%d", Status_Register.PL);
-		tbox_PL_test.invalidate();
+tbox_PL_test.invalidate();
