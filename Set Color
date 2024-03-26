@@ -1,4 +1,4 @@
 
 #include "BitmapDatabase.hpp"
 
-tbox_Battery.setColor(colortype(0xFFFFFF));
+tbox_Battery.setColor(touchgfx::Color::getColorFromRGB(0x02, 0xD4, 0x10));
