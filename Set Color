@@ -4,3 +4,5 @@
 tbox_Battery.setColor(touchgfx::Color::getColorFromRGB(0x02, 0xD4, 0x10));
 
 tbox_Language.setColor(colortype(0xFF0000));
+
+_sc3_Menu_text[0]->setColor(colortype(0xFF0000));
