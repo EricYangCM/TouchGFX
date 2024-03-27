@@ -8,3 +8,8 @@ tbox_Status.invalidate();
 // Integer
 Unicode::snprintf(tbox_PL_testBuffer, TBOX_PL_TEST_SIZE, "%d", Status_Register.PL);
 tbox_PL_test.invalidate();
+
+
+
+// Float
+Unicode::snprintfFloat(tbox_TNT_SlopeBuffer, TBOX_TNT_SLOPE_SIZE, "%f", ((float)tempSlope)/100);
