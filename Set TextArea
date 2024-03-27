@@ -12,4 +12,4 @@ tbox_PL_test.invalidate();
 
 
 // Float
-Unicode::snprintfFloat(tbox_TNT_SlopeBuffer, TBOX_TNT_SLOPE_SIZE, "%f", ((float)tempSlope)/100);
+Unicode::snprintfFloat(tbox_TNT_SlopeBuffer, TBOX_TNT_SLOPE_SIZE, "%.2f", ((float)tempSlope)/100);
