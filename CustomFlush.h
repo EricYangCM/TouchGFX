@@ -16,6 +16,11 @@ extern "C" {
 
 void CustomFlushFrameBuffer(const touchgfx::Rect& rect);
 
+
+// Call this function every 16~20ms
+void CustomFlush_GenerateVSync();
+
+
 #ifdef __cplusplus
 }
 #endif
