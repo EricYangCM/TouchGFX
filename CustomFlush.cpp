@@ -12,9 +12,13 @@
 // CustomFlushFrameBuffer(rect); 로 교체할 것
 
 
+// Vsync 함수 호출 할 것 (16~20ms)
+
+
 #include "main.h"
 #include "custom_flush.h"
 #include <touchgfx/hal/HAL.hpp>
+#include <touchgfx/hal/OSWrappers.hpp>
 
 #define		CUSTOM_FRAMEBUFFER_SIZE		20480
 
@@ -33,9 +37,20 @@ void CustomFlushFrameBuffer(const touchgfx::Rect& rect)
     	_CustomFramBuffer[i * 2 + 1] = (uint8_t)(frameBuffer[i] & 0xFF);       // 하위 바이트
     }
 
-    OLEDCtrk_DrawBlock(rect.x, rect.y, rect.width, rect.height, _CustomFramBuffer);
+    OLEDCtrl_DrawBlock(rect.x, rect.y, rect.width, rect.height, _CustomFramBuffer);
 
 
     // 프레임버퍼 잠금 해제
     touchgfx::HAL::getInstance()->unlockFrameBuffer();
 }
+
+
+
+
+extern "C" void CustomFlush_GenerateVSync() {
+
+	touchgfx::OSWrappers::signalVSync();
+}
+
+
+
