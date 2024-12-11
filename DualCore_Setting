@@ -1,20 +1,13 @@
 https://community.st.com/t5/stm32-mcus-touchgfx-and-gui/touchgfx-designer-error-quot-unable-to-locate-c-lt-path-to/td-p/100242
 
 
-- ApplicationTemplate.touchgfx.part 열기
+1. 이 에러가 뜰거임
 
+Post Generate Target
+        touchgfx update_project
+        Unable to locate C:/Users/cyang/OneDrive-Fiducia/0_Work/55_Diasure_PCR_Prototype/3_Firmware/DS_PCR_Test/.cproject
+        Failed
 
-"Application": {
-    "Name": "Essai_12",
-    ...
-}
+2. CM7 폴더 안에 있는 .cproject 파일을 복사해서 가장 최상위 폴더 (ex: DS_PCR_TEST) 에다가 옮긴다음 빌드해.
 
-
-에서 2줄 추가
-
-
-"Application": {
-  "Platform": "m4",
-  "ProjectFile": "../Essai_12.ioc",
-    "Name": "Essai_12",
-...
+3. 빌드가 완료 되면 그 .cproject 파일을 복사해서 다시 CM7로 옮겨
