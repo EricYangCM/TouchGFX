@@ -1,0 +1,20 @@
+https://community.st.com/t5/stm32-mcus-touchgfx-and-gui/touchgfx-designer-error-quot-unable-to-locate-c-lt-path-to/td-p/100242
+
+
+- ApplicationTemplate.touchgfx.part 열기
+
+
+"Application": {
+    "Name": "Essai_12",
+    ...
+}
+
+
+에서 2줄 추가
+
+
+"Application": {
+  "Platform": "m4",
+  "ProjectFile": "../Essai_12.ioc",
+    "Name": "Essai_12",
+...
