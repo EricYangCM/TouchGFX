@@ -23,5 +23,6 @@ Go_to_Screen_t Go_to_Screen = {0, 0};
 void TouchGFX_Set_Event_Go_to_Screen(int state);
 void TouchGFX_Go_to_Screen(int ScreenNum)
 {
-
+	Go_to_Screen.ScreenNum = ScreenNum;
+	Go_to_Screen.IsEventSet = 1;
 }
