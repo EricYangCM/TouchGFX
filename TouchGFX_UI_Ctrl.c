@@ -4,7 +4,8 @@
  * Author: cyang
  */
 
-#include "UI_Ctrl.h"
+#include "main.h"
+
 
 // ESC 버튼 이벤트 상태 저장 변수
 ESC_Btn_Pressed_t ESC_Btn_Pressed = {0, 0};
