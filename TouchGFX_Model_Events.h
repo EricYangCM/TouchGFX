@@ -1,28 +1,35 @@
 /*
- * TouchGFX_Model_Events.h
+ * UI_Ctrl.h
  * Created on: Mar 18, 2025
  * Author: cyang
  */
 
-#ifndef TOUCHGFX_MODEL_EVENTS_H
-#define TOUCHGFX_MODEL_EVENTS_H
+#ifndef UI_TOUCHGFX_UI_CTRL_H
+#define UI_TOUCHGFX_UI_CTRL_H
 
 #include <stdint.h>
 
 
 
-// UI 이벤트 플래그 구조체 정의
+// ESC Button Click Event
 typedef struct
 {
-    uint8_t IsEventSet;  // 이벤트 발생 여부
-    int State;           // 버튼 상태 또는 추가 데이터
+    uint8_t IsEventSet;
+    int State;
 } ESC_Btn_Pressed_t;
-
 extern ESC_Btn_Pressed_t ESC_Btn_Pressed;
-
-// 이벤트 설정 함수 선언
-void TouchGFX_ModelEvents_Set_ESC_Btn_Pressed(int state);
+void TouchGFX_Set_Event_ESC_Btn_Pressed(int state);
 
 
+// Go to Screen Event
+typedef struct
+{
+    uint8_t IsEventSet;
+    int ScreenNum;
+} Go_to_Screen_t;
+extern Go_to_Screen_t Go_to_Screen;
+void TouchGFX_Set_Event_Go_to_Screen(int state);
 
-#endif /* TOUCHGFX_MODEL_EVENTS_H */
+
+
+#endif /* UI_TOUCHGFX_UI_CTRL_H */
