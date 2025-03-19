@@ -16,7 +16,7 @@
 
 
 #include "main.h"
-#include "custom_flush.h"
+#include "CustomFlush.h"
 #include <touchgfx/hal/HAL.hpp>
 #include <touchgfx/hal/OSWrappers.hpp>
 
@@ -47,10 +47,19 @@ void CustomFlushFrameBuffer(const touchgfx::Rect& rect)
 
 
 
-extern "C" void CustomFlush_GenerateVSync() {
+extern "C" void CustomFlush_GenerateVSync()
+{
+	static uint32_t last_time = 0;
+	if (HAL_GetTick() - last_time >= 16) // 16ms 주기 관리
+	{
+		last_time = HAL_GetTick(); // last_time 업데이트
 
-	touchgfx::OSWrappers::signalVSync();
+		touchgfx::OSWrappers::signalVSync();
+	}
 }
+
+
+
 
 
 
