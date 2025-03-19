@@ -1,9 +1,12 @@
 
-// String
+// 미리 저장해둔 String
 #include <texts/TextKeysAndLanguages.hpp>
 Unicode::snprintf(tbox_StatusBuffer, TBOX_STATUS_SIZE, "%s", touchgfx::TypedText(T_TESTSTRING).getText());
 tbox_Status.invalidate();
 
+
+// string 직접 입력
+Unicode::snprintf(tbox_TitleBuffer, TBOX_TITLE_SIZE, "%s", "A");
 
 // Integer
 Unicode::snprintf(tbox_PL_testBuffer, TBOX_PL_TEST_SIZE, "%d", Status_Register.PL);
