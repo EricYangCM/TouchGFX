@@ -1,0 +1,18 @@
+#include "FreeRTOS.h"
+
+size_t heap_free = xPortGetFreeHeapSize();         // 남은 힙
+size_t heap_min = xPortGetMinimumEverFreeHeapSize(); // 가장 적었던 순간
+
+printf("현재 남은 heap: %lu bytes\n", heap_free);
+printf("가장 적었던 heap: %lu bytes\n", heap_min);
+
+
+
+
+#include "cmsis_os2.h"
+
+extern osThreadId_t myTaskHandle;
+
+uint32_t highWaterMark = osThreadGetStackSpace(myTaskHandle); // CMSIS-RTOS v2에서 남은 스택
+
+printf("남은 스택: %lu bytes\n", highWaterMark);
